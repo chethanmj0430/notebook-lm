@@ -1,0 +1,28 @@
+<div class="pdf-viewer-container  dark-theme">
+  <div class="pdf-viewer-header">
+    <span class="document-title">Your Document</span>
+    <button class="upload-new-button" (click)="onUploadNewFileClick()">
+      <img src="/assets/upload-icon.svg" alt="Upload New" class="upload-icon-small">
+      Upload New File
+    </button>
+  </div>
+  
+  <ngx-extended-pdf-viewer
+    *ngIf="pdfSrc" 
+    [src]="pdfSrc"
+  [theme]="(currentTheme$ | async) === 'dark' ? 'dark' : 'light'"
+  [showOpenFileButton]="false"
+  [showDownloadButton]="false"
+  [showPrintButton]="false"
+  [showSecondaryToolbarButton]="false"
+  [showPresentationModeButton]="false"
+  [showPagingButtons]="false"
+  [showZoomButtons]="false"
+  [showRotateButton]="false"
+    class="pdf-display">
+  </ngx-extended-pdf-viewer>
+
+  <div *ngIf="!pdfSrc" class="no-pdf-message">
+    <p>No PDF loaded. Please upload a file.</p>
+  </div>
+</div>

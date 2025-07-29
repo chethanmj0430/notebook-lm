@@ -1,0 +1,155 @@
+.pdf-viewer-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--secondary-background-color);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pdf-viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #007bff;
+  color: var(--text-color);
+  flex-shrink: 0;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.document-title {
+  font-weight: bold;
+  color: var(--text-color);
+  font-size: 1.1em;
+  transition: color 0.3s ease;
+}
+
+.upload-new-button {
+  background-color: var(--secondary-color);
+  border: 1px solid #007bff;
+  color:var(--text-color);
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background-color: var(--secondary-color);
+    border-color: #007bff;
+  }
+}
+
+.upload-icon-small {
+  width: 16px;
+  height: 16px;
+  filter: var(--icon-filter);
+  transition: filter 0.3s ease;
+}
+
+.pdf-display {
+  flex-grow: 1;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--secondary-background-color);
+}
+
+.no-pdf-message {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color:var(--text-color);
+  font-size: 1.1em;
+  background-color: var(--secondary-background-color);
+}
+
+.no-pdf-message p {
+  margin: 0;
+}
+
+/* 📱 Mobile (max-width: 600px) */
+@media (max-width: 600px) {
+  .pdf-viewer-header,
+  .chat-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .upload-new-button,
+  .clear-chat-button,
+  .theme-toggle-button,
+  .fancy-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .chat-input-area {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .chat-input-area input,
+  .chat-input-area button {
+    width: 100%;
+  }
+
+  .upload-container {
+    padding: 20px;
+    margin: 10px;
+  }
+}
+
+/* 📱📱 Tablets (601px to 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .pdf-viewer-header,
+  .chat-header {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .upload-new-button,
+  .clear-chat-button,
+  .theme-toggle-button {
+    flex: 1 1 auto;
+  }
+
+  .chat-input-area input {
+    flex: 2;
+  }
+
+  .chat-input-area button {
+    flex: 1;
+  }
+}
+
+/* 🖥️ Desktop (above 1024px) */
+@media (min-width: 1025px) {
+  .pdf-viewer-header,
+  .chat-header {
+    flex-direction: row;
+  }
+
+  .upload-new-button,
+  .clear-chat-button,
+  .theme-toggle-button {
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .pdf-viewer-header {
+    display: none;
+  }
+}

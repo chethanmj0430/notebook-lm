@@ -1,0 +1,120 @@
+:root,
+.light-theme {
+  --primary-color: #3d6289;
+  --secondary-color: #e8ebee;
+  --secondary-background-color: #ffffff;
+  --border-color: #dee2e6;
+  --text-color: #212529;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme {
+  --primary-color: #1a212c;
+  --secondary-color: #093969;
+  --secondary-background-color: #22262b;
+  --border-color: #444;
+  --text-color: #f1f1f1;
+  --shadow-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .pdf-viewer-container {
+  background-color: #22262b;
+  filter: invert(1) hue-rotate(180deg);
+}
+
+
+.initial-upload-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.initial-upload-view app-pdf-upload {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.initial-upload-view .upload-container {
+  width: 400px;
+  height: 250px;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--secondary-background-color);
+}
+
+.main-container {
+  display: flex;
+  height: 100vh; 
+  overflow: hidden;
+}
+
+.left-panel {
+  flex: 3;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: var(--secondary-background-color);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right-panel {
+  flex: 2;
+  padding: 20px;
+  background-color: var(--secondary-background-color);
+  border-left: 1px solid #eee;
+  display: flex; 
+  flex-direction: column; 
+  text-align: center;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-panel,
+  .right-panel {
+    flex: unset;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .left-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .right-panel {
+    border-left: none;
+  }
+
+  .initial-upload-view {
+    height: auto;
+    width: 100%;
+    padding: 20px 10px;
+  }
+
+  .initial-upload-view .upload-container {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+  }
+}
+
+

@@ -1,0 +1,40 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <div class="pdf-name-display">
+      <ng-container *ngIf="currentPdfName$ | async as pdfName; else noPdfLoaded">
+        Chat About: <strong>{{ pdfName }}</strong>
+      </ng-container>
+      <ng-template #noPdfLoaded>
+        Chat with PDF
+      </ng-template>
+    </div>
+     <button (click)="clearChat()" class="clear-chat-button fancy-btn">Clear</button>
+      <label class="theme-switch">
+        <input type="checkbox" [checked]="(currentTheme$ | async) === 'dark'" (change)="toggleTheme()">
+        <span class="slider"></span>
+      </label>
+
+  </div>
+
+  <ul class="messages-display" #messagesDisplay>
+    <li *ngFor="let message of messages" [class.user-message]="message.sender === 'user'" [class.bot-message]="message.sender === 'bot'">
+      <div class="message-bubble">
+        <p>{{ message.text }}</p>
+        <span class="timestamp">{{ message.timestamp | date:'shortTime' }}</span>
+      </div>
+    </li>
+    <li *ngIf="isLoadingResponse" class="bot-message loading">
+      <div class="message-bubble">Thinking...</div>
+    </li>
+  </ul>
+
+  <div class="chat-input-area">
+    <input
+      type="text"
+      [(ngModel)]="newMessage"
+      (keyup.enter)="sendMessage()"
+      placeholder="Ask a question about the document..."
+      [disabled]="isLoadingResponse" >
+    <button (click)="sendMessage()"  [disabled]="isLoadingResponse">Send</button>
+  </div>
+</div>

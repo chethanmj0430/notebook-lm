@@ -1,0 +1,35 @@
+<div class="main-container">
+  <ng-container *ngIf="!loadedPdfData">
+    <div class="initial-upload-view">
+        <app-pdf-upload (pdfLoaded)="onPdfLoaded($event)"></app-pdf-upload>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="loadedPdfData">
+    <div class="mobile-nav">
+  <button (click)="toggleMobileMenu()" class="menu-toggle">☰ Menu</button>
+
+  <div class="menu-items" [ngClass]="{ 'open': mobileMenuOpen }">
+    <button (click)="onUploadNewFile()">
+      <img src="/assets/upload-icon.svg" alt="Upload Icon" class="upload-icon" width="10px">
+      Upload New
+    </button>
+    <button (click)="triggerClearChat()">🗑️ Clear Chat</button>
+
+   <button class="theme-toggle-button" (click)="toggleTheme()">
+    🌗 Toggle Theme
+  </button>
+  </div>
+</div>
+    <div class="left-panel">
+      <app-pdf-viewer
+        [pdfSrc]="loadedPdfData"
+        (uploadNewFile)="onUploadNewFile()">
+      </app-pdf-viewer>
+    </div>
+    <div class="right-panel">
+      <app-chat-interface></app-chat-interface>
+    </div>
+  </ng-container>
+</div>
+<router-outlet />
