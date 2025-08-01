@@ -1,0 +1,16 @@
+{
+  "installCommand": "npm install --prefix=notebooklm-backend-nextjs",
+  "buildCommand": "npm run build --prefix=notebooklm-backend-nextjs",
+  "outputDirectory": "notebooklm-backend-nextjs/.next",
+  "framework": "nextjs",
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/notebooklm-backend-nextjs/pages/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/notebooklm-backend-nextjs/$1"
+    }
+  ]
+}
